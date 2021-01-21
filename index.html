@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=d, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="root">
+        <form action="">
+            <textarea id="oldText" placeholder="Вставьте сюда ваш текст"></textarea>
+            <div>
+                <input type="button" class="g_button" id="upper" value="ВЕРХНИЙ РЕГИСТР">
+                <input type="button" class="g_button" id="lowCase" value="нижний РЕГИСТР">
+                <input type="button" class="g_button" id="firstUp" value="Первая большая">
+                <input type="button" class="g_button" id="firstUpWord" value="Первая большая во всех">
+            </div>
+        </form>
+
+
+    </div>
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 120px 0;
+        }
+    textarea {
+        height: 200px;
+        width: 100%;
+        max-width: 590px;
+    }
+    .g_button {
+        padding: 6px 9px 6px 9px;
+        margin: 3px 0;
+    }
+
+
+    </style>
+    <script>
+        let doc = document;
+         doc.getElementById("upper").addEventListener("click", function () {
+            let caseText = doc.getElementById('oldText').value;
+            caseText = caseText.toUpperCase();
+            doc.getElementById('oldText').value = caseText;
+        })
+        doc.getElementById("lowCase").addEventListener("click", function () {
+            let caseText = doc.getElementById('oldText').value;
+            caseText = caseText.toLowerCase();
+            doc.getElementById('oldText').value = caseText;
+        })
+        doc.getElementById("firstUp").addEventListener("click", function () {
+            let caseText = doc.getElementById('oldText').value;
+            caseText = caseText[0].toUpperCase() + caseText.slice(1);
+            doc.getElementById('oldText').value = caseText;
+        })
+        doc.getElementById("firstUpWord").addEventListener("click", function () {
+            let caseText = doc.getElementById('oldText').value;
+            let newText = caseText.replace(/(?:^|\s)(\S)/ug, m => m.toUpperCase());
+            doc.getElementById('oldText').value = newText;
+        })
+    </script>
+</body>
+</html>
